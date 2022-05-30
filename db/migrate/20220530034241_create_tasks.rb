@@ -5,8 +5,8 @@ class CreateTasks < ActiveRecord::Migration[6.1]
       t.text :desc
       t.date :due_date
       t.string :priority
-      t.integer :active
-      t.integer :is_done
+      t.boolean :is_active
+      t.boolean :is_done
 
       t.timestamps
     end

@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2022_05_30_034241) do
     t.text "desc"
     t.date "due_date"
     t.string "priority"
-    t.integer "active"
-    t.integer "is_done"
+    t.boolean "is_active"
+    t.boolean "is_done"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
