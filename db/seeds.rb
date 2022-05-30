@@ -9,3 +9,5 @@
 task = Task.create(name: "Task1", desc: "Tugas pemrograman algoritma", due_date:'30/5/2022', priority: "low", is_active: true , is_done: false)
 task2 = Task.create(name: "Task2", desc: "Tugas pemrograman statistika", due_date:'20/5/2022', priority: "medium", is_active: true , is_done: true)
 task3 = Task.create(name: "Task3", desc: "Tugas pemrograman OOP", due_date:'22/5/2022', priority: "high", is_active: false, is_done: true)
+
+user = User.create(email: 'alif@gmail.com', password:'rahasia', password_confirmation:'rahasia', username:'alifudinniko')
