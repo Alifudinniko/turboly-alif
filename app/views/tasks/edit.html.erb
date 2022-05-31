@@ -1,0 +1,23 @@
+<%= link_to 'back', tasks_path %>
+
+<%= form_with model: @task , url: task_path do |form| %>
+    <div class="mb-3">
+        <%= form.label :name %>
+        <%= form.text_field :name, class:"form-control", placeholder:"name task" %>
+    </div>
+    <div class="mb-3">
+        <%= form.label :desc %>
+        <%= form.text_area :desc, class:"form-control" ,placeholder:"description of task" %>
+    </div>
+    <div class="mb-3">
+        <%= form.label :due_date %>
+        <%= form.date_field :due_date, class:"form-control"  %>
+    </div>
+    <div class="mb-3">
+        <%= form.label :priority %>
+        <%= form.select :priority, options_for_select(['low','medium','high']) , class:"form-select" %>
+    </div>
+    <div class="mb-3">
+        <%= form.submit "Update Task", class:"btn btn-primary"%>
+    </div>
+<% end %>

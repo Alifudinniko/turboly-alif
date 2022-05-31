@@ -7,4 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user = User.create(email: 'alif@gmail.com', password:'rahasia', password_confirmation:'rahasia', username:'alifudinniko') 
-task = Task.create([{name: "Task1", desc: "Tugas pemrograman algoritma", due_date:'30/5/2022', priority: "low", is_active: true , is_done: false, created_by: 1},{name: "Task2", desc: "Tugas pemrograman statistika", due_date:'20/5/2022', priority: "medium", is_active: true , is_done: true, created_by: 1}])
+task = Task.create([{name: "Task1", desc: "Tugas pemrograman algoritma", due_date:'30/5/2022', priority: "low", is_done: false, created_by: 1},{name: "Task2", desc: "Tugas pemrograman statistika", due_date:'20/5/2022', priority: "medium", is_active: true , is_done: true, created_by: 1}])
