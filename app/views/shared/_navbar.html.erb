@@ -12,25 +12,27 @@
         </li>
         <li class="nav-item">
         <%= link_to "Tasks", tasks_path, class:"nav-link" %>
+        </li>
 
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <% if Current.user %> 
+        <li class="nav-item">
+          <%= Current.user.username %> 
         </li>
-        <% if @user %>  
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-           <%= @user.username %>     
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li>
-   
-            <%= button_to "logout", logout_path,class:"dropdown-item" ,method: :delete%>
-            
-            </li>
-          </ul>
+        <li class="nav-item">
+            <%= button_to "logout", logout_path, class: "btn btn-outline-danger" ,method: :delete %>
         </li>
-        <% else %>      
-          <%= link_to "Sigin/Signup", sign_up_path, class:"btn btn-light" %>     
+        <% else %>
+        <li class="nav-item">
+             <%= link_to "Sigup", sign_up_path, class: "btn btn-link" %>
+        </li>
+        <li class="nav-item">
+           <%= link_to "Sigin", sign_in_path, class: "btn btn-link" %>          
+        </li>
         <% end %>
+
+        </ul>
+       
        
       </ul>
       <form class="d-flex" role="search">
