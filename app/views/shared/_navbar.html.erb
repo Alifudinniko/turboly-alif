@@ -14,7 +14,7 @@
         <%= link_to "Tasks", tasks_path, class:"nav-link" %>
         </li>
 
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 justify-content-end">
         <% if Current.user %> 
         <li class="nav-item">
           <%= Current.user.username %> 
@@ -30,15 +30,11 @@
            <%= link_to "Sigin", sign_in_path, class: "btn btn-link" %>          
         </li>
         <% end %>
-
         </ul>
        
        
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      
     </div>
   </div>
 </nav>

@@ -1,8 +1,23 @@
 class TasksController < ApplicationController
+    # Mengubah is_done
+    def toggle
+        @task = Task.find(params[:id])
+        if @task.is_done == true
+            @task.is_done = false
+            @task.save
+            redirect_to tasks_path, notice: "Edited status"
+        else
+            @task.is_done = true
+            @task.save
+            redirect_to tasks_path, notice: "Edited status 2"
+        end
+    
+    end
+
     # Menampilkan semua data tasks user    
     def index
         id_user = session[:user_id]
-
+        @today = Date.today
         @tasks = Task.where(created_by: id_user)
         #@tasks = Task.all
     end
@@ -56,6 +71,8 @@ class TasksController < ApplicationController
     def tasks_params
         params.require(:task).permit(:name, :due_date, :desc, :priority)
     end
+
+   
 
 
 
