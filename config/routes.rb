@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get '/tasks', to:'tasks#index'
 
+  get '/sign_up',  to:'registrations#new'
+  post '/sign_in', to:'registrations#create'
 
   root to: "main#index"
 end
