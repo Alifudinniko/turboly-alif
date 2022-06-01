@@ -6,11 +6,11 @@ class TasksController < ApplicationController
         if @task.is_done == true
             @task.is_done = false
             @task.save
-            redirect_to tasks_path, notice: "Edited status"
+            redirect_to tasks_path, notice: "Edited status Success"
         else
             @task.is_done = true
             @task.save
-            redirect_to tasks_path, notice: "Edited status 2"
+            redirect_to tasks_path, notice: "Edited status Success"
         end
     
     end
