@@ -13,6 +13,9 @@ class TasksController < ApplicationController
         end
     
     end
+    def search
+      render plain: params.inspect
+    end
 
     # Menampilkan semua data tasks user    
     def index
@@ -21,15 +24,18 @@ class TasksController < ApplicationController
         @today = Date.today
         
         @tasks = Task.where(created_by: id_user)
-        if params[:priority]
-            @tasks = @tasks.where(priority: params[:priority])
-        end
-        if params[:due_date]
-            @tasks = @tasks.where(due_date: params[:due_date])
-        end
-        if params[:desc]
-            @tasks = @tasks.where(desc: "+ LIKE '%"+(params[:desc])+"%'")
-        end
+      
+            if params[:priority].present?
+                @tasks = @tasks.where(priority: params[:priority])
+            end
+            if params[:due_date].present?
+                @tasks = @tasks.where(due_date: params[:due_date])
+            end
+            if params[:desc].present?
+                @tasks = @tasks.where(desc: "+ LIKE '%"+(params[:desc])+"%'")
+            end
+        
+        
 
         #@tasks = @tasks.where("desc LIKE ?",Task.sanitize_sql_like(params[:desc])+"%")
         #@tasks = @tasks.where("priority = ?", params[:priority])
@@ -82,6 +88,9 @@ class TasksController < ApplicationController
 
     private
     def tasks_params
+        params.require(:task).permit(:name, :due_date, :desc, :priority)
+    end
+    def search_params
         params.require(:task).permit(:name, :due_date, :desc, :priority)
     end
 
