@@ -16,10 +16,23 @@ class TasksController < ApplicationController
 
     # Menampilkan semua data tasks user    
     def index
+         #@tasks = Task.all
         id_user = session[:user_id]
         @today = Date.today
+        
         @tasks = Task.where(created_by: id_user)
-        #@tasks = Task.all
+        if params[:priority]
+            @tasks = @tasks.where(priority: params[:priority])
+        end
+        if params[:due_date]
+            @tasks = @tasks.where(due_date: params[:due_date])
+        end
+        if params[:desc]
+            @tasks = @tasks.where(desc: "+ LIKE '%"+(params[:desc])+"%'")
+        end
+
+        #@tasks = @tasks.where("desc LIKE ?",Task.sanitize_sql_like(params[:desc])+"%")
+        #@tasks = @tasks.where("priority = ?", params[:priority])
     end
 
     # Membuat form tambah data 

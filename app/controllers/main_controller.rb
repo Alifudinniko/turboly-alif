@@ -5,6 +5,8 @@ class MainController < ApplicationController
             @user = User.find_by(id: session[:user_id])
         end
 
+        @tasks = Task.where(created_by: session[:user_id], due_date: Date.today)
+
     end
     
 end
