@@ -53,3 +53,4 @@ production:
   database: turboly_production
   username: turboly
   password: <%= ENV['TURBOLY_DATABASE_PASSWORD'] %>
+  url: <%= ENV['MY_APP_DATABASE_URL'] %>
