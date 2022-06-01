@@ -3,7 +3,7 @@
 </div>
 <%= link_to 'back', tasks_path %>
 
-<%= form_with model: @task , url: tasks_path do |form| %>
+<%= form_with model: @task, url: tasks_path do |form| %>
     <% if form.object.errors.any? %>
     <div class="alert alert-danger">
         <% form.object.errors.full_messages.each do |message| %>

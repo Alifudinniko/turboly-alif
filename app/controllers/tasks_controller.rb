@@ -51,10 +51,10 @@ class TasksController < ApplicationController
     # Mengirim data dari form tambah
     def create
      
-        @create = Task.new(tasks_params )
-        @create.is_done = false
-        @create.created_by = session[:user_id]
-        if @create.save
+        @task = Task.new(tasks_params )
+        @task.is_done = false
+        @task.created_by = session[:user_id]
+        if @task.save
             redirect_to tasks_path, notice: "Created task successfully"
         else
             render :new
