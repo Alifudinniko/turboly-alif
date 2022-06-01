@@ -1,8 +1,7 @@
 
 <% if Current.user %>
 <% if @tasks %>
-<%= link_to "Create", new_task_path, class: "btn btn-primary mt-4" %>   
-<% @today %>
+<h1> Today Task ! <%= @today %></h1>
 <table class="table mt-3">
   <thead>
     <tr>
@@ -47,7 +46,7 @@
         <div class="card-body">
         <h5 class="card-title">Create Task</h5>
         <p class="card-text"> </p>
-        <%= link_to "Create", tasks_path, class:"btn btn-primary" %>
+        <%= link_to "Create", new_task_path, class:"btn btn-primary" %>
      
         </div>
        </div>
@@ -58,6 +57,14 @@
         <h5 class="card-title">All Task</h5>
         <p class="card-text"> </p>
         <%= link_to "Check", tasks_path, class:"btn btn-primary" %>
+        </div>
+    </div>
+     <br>
+    <div class="card mt-3" style="width: 18rem;">
+        <div class="card-body">
+        <h5 class="card-title">Create Task</h5>
+        <p class="card-text"> </p>
+        <%= link_to "Create", new_task_path, class:"btn btn-primary" %>
         </div>
     </div>
      <br>

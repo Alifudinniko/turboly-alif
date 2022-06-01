@@ -32,13 +32,14 @@ class TasksController < ApplicationController
                 @tasks = @tasks.where(due_date: params[:due_date])
             end
             if params[:desc].present?
-                @tasks = @tasks.where(desc: "+ LIKE '%"+(params[:desc])+"%'")
+                #@wildcard_search = "%#{params[:desc]}%"
+                wildcard_search = Task.sanitize_sql_like(params[:desc])
+                #@tasks = @tasks.where("desc like :search OR name like :search",search: wildcard_search)
+                #@tasks = @tasks.where(desc: params[:desc])
+                #@tasks= @tasks.where("desc LIKE ?", "%" + params[:desc] + "%")
+                @tasks = @tasks.where(name: wildcard_search)
+                  
             end
-        
-        
-
-        #@tasks = @tasks.where("desc LIKE ?",Task.sanitize_sql_like(params[:desc])+"%")
-        #@tasks = @tasks.where("priority = ?", params[:priority])
     end
 
     # Membuat form tambah data 
