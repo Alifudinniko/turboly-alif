@@ -8,5 +8,10 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def require_user_logged_in!
+        redirect_to sign_in_path, alert: "You must be sign todo that." if Current.user.nil?
+    end
+    
+
 end
 

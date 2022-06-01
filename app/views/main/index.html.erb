@@ -1,11 +1,10 @@
 
 <% if Current.user %>
 <% if @tasks %>
-<h1> Today Task ! <%= @today %></h1>
+<h1> Today Task ! - <%= Date.today.strftime("%a, %e %b %Y") %></h1>
 <table class="table mt-3">
   <thead>
     <tr>
-    
       <th scope="col">Task</th>
       <th scope="col">Desc</th>
       <th scope="col">Due Date</th>

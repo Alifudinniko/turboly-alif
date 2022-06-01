@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     patch :toggle, on: :member
   end
 
+  get 'password', to:'passwords#edit'
+  patch 'password', to:'passwords#update'
+  
   get 'sign_up',  to:'registrations#new'
   post 'sign_up', to:'registrations#create'
   

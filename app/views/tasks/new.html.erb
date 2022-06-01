@@ -2,14 +2,15 @@
 <h1> Create Task</h1>
 </div>
 <%= link_to 'back', tasks_path %>
-<%= form_with model: @task , url:  tasks_path do |form| %>
-<% if @task.errors.any? %>
+
+<%= form_with model: @task , url: tasks_path do |form| %>
+    <% if form.object.errors.any? %>
     <div class="alert alert-danger">
-        <% @task.errors.full_messages.each do |message| %>
+        <% form.object.errors.full_messages.each do |message| %>
             <div><%= message %> </div>
         <% end %>
     </div>
-<% end %>
+    <% end %>
     <div class="mb-3">
         <%= form.label :name %>
         <%= form.text_field :name, class:"form-control", placeholder:"name task" %>

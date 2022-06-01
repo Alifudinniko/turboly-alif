@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+    before_action :require_user_logged_in!
     # Mengubah is_done
     def toggle
         @task = Task.find(params[:id])
