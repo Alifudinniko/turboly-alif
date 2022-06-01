@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     patch :toggle, on: :member
   end
 
+
   get 'password', to:'passwords#edit'
   patch 'password', to:'passwords#update'
   
@@ -14,6 +15,9 @@ Rails.application.routes.draw do
   
   get 'sign_in',  to:'sessions#new'
   post 'sign_in', to:'sessions#create'
+
+  get 'password/reset', to:'password_resets#new'
+  post 'password/reset', to:'password_resets#create'
   
   
   delete 'logout', to:'sessions#destroy'
