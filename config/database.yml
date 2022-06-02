@@ -52,4 +52,4 @@ test:
 #  password: <%= ENV['TURBOLY_DATABASE_PASSWORD'] %>
 production:
   <<: *default
-  url: <%= ENV['CLEARDB_DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>
