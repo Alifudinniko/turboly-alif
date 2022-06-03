@@ -1,1 +1,1 @@
-release: bin/rails db: rebuild
+release: bin/rails db:rebuild
