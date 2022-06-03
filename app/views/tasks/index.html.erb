@@ -1,8 +1,7 @@
 
 
-
-
 <% if @tasks %>
+
 <%= link_to "Create", new_task_path, class: "btn btn-primary mt-4" %>   
 <% @today %>
  <%= form_tag tasks_path, method: :get do %>

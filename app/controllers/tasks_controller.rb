@@ -38,7 +38,7 @@ class TasksController < ApplicationController
                 #@tasks = @tasks.where("desc like :search OR name like :search",search: wildcard_search)
                 #@tasks = @tasks.where(desc: params[:desc])
                 #@tasks= @tasks.where("desc LIKE ?", "%" + params[:desc] + "%")
-                @tasks = @tasks.where(name: wildcard_search)
+                @tasks = @tasks.where(desc: wildcard_search)
                   
             end
     end
