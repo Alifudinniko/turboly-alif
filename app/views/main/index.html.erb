@@ -21,7 +21,15 @@
       <td> <%= task.name %> </td>
       <td> <%= task.desc %> </td>
       <td> <%= task.due_date %></td>
-      <td> <%= task.priority_id %></td>
+
+      <%if task.priority_id == 4%>
+        <td> HIGH </td>
+      <%elsif task.priority_id == 14%>
+        <td> low </td>
+      <%elsif task.priority_id == 24%>
+       <td> Medium</td>
+      <% end %>
+      
       <% if task.is_done %>
         <td> <%= link_to "  finish   " , toggle_task_path(task.id), method: 'patch',class: "btn btn-outline-primary" %></td>
       <% else %>
