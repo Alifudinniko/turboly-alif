@@ -50,7 +50,4 @@ test:
 #   
 production:
   <<: *default
-  database: turboly_production
-  username: b84605acc9b47b
-  password: 09346078
   url: <%= ENV['DB_DATABASE_URL'] %>
