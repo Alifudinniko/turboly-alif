@@ -21,7 +21,7 @@
       <td> <%= task.name %> </td>
       <td> <%= task.desc %> </td>
       <td> <%= task.due_date %></td>
-      <td> <%= task.priority %></td>
+      <td> <%= task.priority_id %></td>
       <% if task.is_done %>
         <td> <%= link_to "  finish   " , toggle_task_path(task.id), method: 'patch',class: "btn btn-outline-primary" %></td>
       <% else %>

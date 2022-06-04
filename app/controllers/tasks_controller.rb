@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
     before_action :require_user_logged_in!
-
+ 
     # Mengubah is_done
     def toggle
         @task = Task.find(params[:id])
@@ -24,11 +24,17 @@ class TasksController < ApplicationController
     
     def initializee
         @tasks = Task.alphabetical
+        @priority = Priority.all
     end
 
     def handle_search
         if params[:priority].present?
-            @tasks = @tasks.where(priority: params[:priority])
+            priority = Priority.find_by(id: params[:priority])
+            if priority
+                @tasks = @tasks.where(priority_id: priority.id)
+            else 
+                flash[:alert] = "Not found! "
+            end
         end
         if params[:due_date].present?
             @tasks = @tasks.where(due_date: params[:due_date])
@@ -40,9 +46,6 @@ class TasksController < ApplicationController
     end
 
   
-
-   
-
     # Membuat form tambah data 
     def new
         @task = Task.new 
@@ -50,10 +53,11 @@ class TasksController < ApplicationController
 
     # Mengirim data dari form tambah
     def create
+        @priority = Priority.all
      
         @task = Task.new(tasks_params )
         @task.is_done = false
-        @task.created_by = session[:user_id]
+        @task.user_id = session[:user_id]
         if @task.save
             redirect_to tasks_path, notice: "Created task successfully"
         else
@@ -90,14 +94,7 @@ class TasksController < ApplicationController
 
     private
     def tasks_params
-        params.require(:task).permit(:name, :due_date, :desc, :priority)
+        params.require(:task).permit(:name, :due_date, :desc, :priority_id)
     end
-    def search_params
-        params.require(:task).permit(:name, :due_date, :desc, :priority)
-    end
-
-   
-
-
 
 end

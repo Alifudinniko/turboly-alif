@@ -21,8 +21,8 @@
         <%= form.date_field :due_date, class:"form-control"  %>
     </div>
     <div class="mb-3">
-        <%= form.label :priority %>
-        <%= form.select :priority, options_for_select(['low','medium','high']) , class:"form-select" %>
+        <%= form.label :priority_id %>
+        <%= form.select :priority_id, Priority.all.collect{|p| [p.name, p.id]},{ include_blank: "Choose a Priority"}, class:"form-select" %>
     </div>
     <div class="mb-3">
         <%= form.submit "Update Task", class:"btn btn-primary"%>

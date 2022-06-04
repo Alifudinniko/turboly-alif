@@ -6,5 +6,24 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user = User.create(email: 'alif@gmail.com', password:'rahasia', password_confirmation:'rahasia', username:'alifudinniko') 
-task = Task.create([{name: "Task1", desc: "Tugas pemrograman algoritma", due_date:'30/5/2022', priority: "low", is_done: false, created_by: 1},{name: "Task2", desc: "Tugas pemrograman statistika", due_date:'20/5/2022', priority: "medium", is_active: true , is_done: true, created_by: 1}])
+user = User.create(
+    [
+        {email: 'alif@gmail.com', password:'rahasia', password_confirmation:'rahasia', username:'alifudinniko'},
+        {email: 'niko@gmail.com', password:'rahasia', password_confirmation:'rahasia', username:'niko'},
+    
+    ]) 
+priority = Priority.create(
+        [
+            {name: "high"},
+            {name: "low"},
+            {name: "medium"}
+        ]
+    )
+task = Task.create(
+    [
+        {name: "Task1", desc: "Tugas pemrograman algoritma", due_date:'30/5/2022', priority_id: 1, is_done: false, user_id: 1},
+        {name: "Task2", desc: "Tugas pemrograman statistika", due_date:'20/5/2022', priority_id: 2, is_done: true, user_id: 1},
+        {name: "Task3", desc: "Tugas pemrograman oop", due_date:'20/5/2022', priority_id: 3, is_done: true, user_id: 1}
+            
+    ])
+

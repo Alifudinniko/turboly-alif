@@ -1,7 +1,8 @@
 <%= form_tag tasks_path, method: :get do %>
         <%= text_field_tag :desc %>
         <%= date_field_tag :due_date %>
-        <%= select_tag :priority, options_for_select(['','low','medium','high']) %>
+        <%= select_tag :priority, options_for_select([['low',2],['medium',3],['high',1]]) , { include_blank: "Choose a Priority"}%>
+     
         <%= submit_tag "Search"%>
 <% end %>
 

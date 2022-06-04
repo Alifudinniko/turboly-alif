@@ -6,12 +6,15 @@ class Task < ApplicationRecord
     validates :priority, presence:false
     
     def self.alphabetical
-        self.all.order(:name).where(created_by: Current.user.id)
+        self.all.order(:name).where(user_id: Current.user.id)
     end
 
     def self.date
-        self.all.order(:due_date).where(created_by: Current.user.id)
+        self.all.order(:due_date).where(user_id: Current.user.id)
     end
+
+    has_one :priority
+    belongs_to :user
 
     
 end
