@@ -3,7 +3,8 @@ class PrioritiesController < ApplicationController
         @priority = Priority.all
         render json: {
             values: @priority,
-            message: "SUccess!"
+            message: "Success!"
         }, status: 200
     end
+    
 end
