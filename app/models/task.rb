@@ -12,4 +12,14 @@ class Task < ApplicationRecord
     #    due_date < Date.today
     #end
 
+    def self.alphabetical
+        self.all.order(:name).where(created_by: params[:id])
+    end
+
+    def find_tasks
+        Task.all.select do |f|
+            f.task == self.code
+        end
+    end
+
 end

@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   resources :tasks do
     patch :toggle, on: :member
   end
+  
+  get 's/task_search', to: 'searches#task_search', as: 'task_search'
+  get 's/task_clear', to: 'searches#search_clear', as: 'search_clear'
+
+  
 
 
   get 'password', to:'passwords#edit'

@@ -32,13 +32,15 @@ class TasksController < ApplicationController
             if params[:due_date].present?
                 @tasks = @tasks.where(due_date: params[:due_date])
             end
+          
             if params[:desc].present?
                 #@wildcard_search = "%#{params[:desc]}%"
                 wildcard_search = Task.sanitize_sql_like(params[:desc])
                 #@tasks = @tasks.where("desc like :search OR name like :search",search: wildcard_search)
                 #@tasks = @tasks.where(desc: params[:desc])
                 #@tasks= @tasks.where("desc LIKE ?", "%" + params[:desc] + "%")
-                @tasks = @tasks.where(desc: wildcard_search)
+                #@tasks = @tasks.where(desc: wildcard_search)
+                @tasks = Task.where("desc LIKE ?", "%#{wildcard_search.titleize}%")
                   
             end
     end
