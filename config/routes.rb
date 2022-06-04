@@ -1,16 +1,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  
   resources :tasks do
     patch :toggle, on: :member
   end
-  
-  get 's/task_search', to: 'searches#task_search', as: 'task_search'
-  get 's/task_clear', to: 'searches#search_clear', as: 'search_clear'
-
-  
-
 
   get 'password', to:'passwords#edit'
   patch 'password', to:'passwords#update'
@@ -26,7 +19,6 @@ Rails.application.routes.draw do
   get 'password/reset/edit', to: 'password_resets#edit'
   patch 'password/reset/edit', to: 'password_resets#update'
 
-  
   delete 'logout', to:'sessions#destroy'
 
   root to: "main#index"

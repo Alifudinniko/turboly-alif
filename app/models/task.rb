@@ -5,21 +5,13 @@ class Task < ApplicationRecord
     validates :due_date, presence:true
     validates :priority, presence:false
     
-    #validate :deadline_cannot_be_in_the_past
-    
-    #def deadline_cannot_be_in_the_past
-    #    errors.add(:due_date, "can't be in the past") if
-    #    due_date < Date.today
-    #end
-
     def self.alphabetical
-        self.all.order(:name).where(created_by: params[:id])
+        self.all.order(:name).where(created_by: Current.user.id)
     end
 
-    def find_tasks
-        Task.all.select do |f|
-            f.task == self.code
-        end
+    def self.date
+        self.all.order(:due_date).where(created_by: Current.user.id)
     end
 
+    
 end

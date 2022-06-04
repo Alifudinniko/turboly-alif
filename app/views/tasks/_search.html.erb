@@ -1,0 +1,8 @@
+<%= form_tag tasks_path, method: :get do %>
+        <%= text_field_tag :desc %>
+        <%= date_field_tag :due_date %>
+        <%= select_tag :priority, options_for_select(['','low','medium','high']) %>
+        <%= submit_tag "Search"%>
+<% end %>
+
+<%= link_to "Clear search", tasks_path%>

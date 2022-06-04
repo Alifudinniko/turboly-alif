@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
     before_action :require_user_logged_in!
+
     # Mengubah is_done
     def toggle
         @task = Task.find(params[:id])
@@ -14,36 +15,33 @@ class TasksController < ApplicationController
         end
     
     end
-    def search
-      render plain: params.inspect
-    end
 
     # Menampilkan semua data tasks user    
     def index
-         #@tasks = Task.all
-        id_user = session[:user_id]
-        @today = Date.today
-        
-        @tasks = Task.where(created_by: id_user)
-      
-            if params[:priority].present?
-                @tasks = @tasks.where(priority: params[:priority])
-            end
-            if params[:due_date].present?
-                @tasks = @tasks.where(due_date: params[:due_date])
-            end
-          
-            if params[:desc].present?
-                #@wildcard_search = "%#{params[:desc]}%"
-                wildcard_search = Task.sanitize_sql_like(params[:desc])
-                #@tasks = @tasks.where("desc like :search OR name like :search",search: wildcard_search)
-                #@tasks = @tasks.where(desc: params[:desc])
-                #@tasks= @tasks.where("desc LIKE ?", "%" + params[:desc] + "%")
-                #@tasks = @tasks.where(desc: wildcard_search)
-                @tasks = Task.where("desc LIKE ?", "%#{wildcard_search.titleize}%")
-                  
-            end
+        initializee
+        handle_search
     end
+    
+    def initializee
+        @tasks = Task.alphabetical
+    end
+
+    def handle_search
+        if params[:priority].present?
+            @tasks = @tasks.where(priority: params[:priority])
+        end
+        if params[:due_date].present?
+            @tasks = @tasks.where(due_date: params[:due_date])
+        end    
+        if params[:desc].present?
+            wildcard_search = Task.sanitize_sql_like(params[:desc])
+            @tasks = Task.where("name LIKE ?", "%#{wildcard_search.titleize}%")             
+        end
+    end
+
+  
+
+   
 
     # Membuat form tambah data 
     def new

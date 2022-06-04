@@ -3,15 +3,9 @@
 <% if @tasks %>
 
 <%= link_to "Create", new_task_path, class: "btn btn-primary mt-4" %>   
-<% @today %>
- <%= form_tag tasks_path, method: :get do %>
-        <%= text_field_tag :desc %>
-        <%= date_field_tag :due_date %>
-        <%= select_tag :priority, options_for_select(['','low','medium','high']) %>
-        <br/>
-        <%= submit_tag "Search"%>
-     <% end %>
-     <%= link_to "All", tasks_path, class:"btn btn-primary" %>
+
+<%= render partial: "tasks/search" %>
+
 <table class="table mt-3">
   <thead>
     <tr>
