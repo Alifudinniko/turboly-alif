@@ -12,13 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2022_06_04_091050) do
 
-  create_table "priorities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "priorities", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "tasks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "tasks", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.string "name"
     t.text "desc"
     t.date "due_date"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2022_06_04_091050) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.string "email", null: false
     t.string "password_digest"
     t.string "username", null: false
