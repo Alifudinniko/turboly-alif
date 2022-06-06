@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-
+    
     validates :name, presence:true
     validates :desc, presence:false
     validates :due_date, presence:true
@@ -12,6 +12,7 @@ class Task < ApplicationRecord
     def self.date
         self.all.order(:due_date).where(user_id: Current.user.id)
     end
+
 
     has_one :priority
     belongs_to :user

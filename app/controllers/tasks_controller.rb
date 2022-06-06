@@ -24,7 +24,7 @@ class TasksController < ApplicationController
     
     def initializee
         @tasks = Task.alphabetical
-        @priority = Priority.all
+        #@priority = Priority.all
     end
 
     def handle_search
@@ -53,9 +53,8 @@ class TasksController < ApplicationController
 
     # Mengirim data dari form tambah
     def create
-        @priority = Priority.all
-     
-        @task = Task.new(tasks_params )
+        
+        @task = Task.new(tasks_params)
         @task.is_done = false
         @task.user_id = session[:user_id]
         if @task.save

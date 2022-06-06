@@ -28,11 +28,11 @@ data : <%= @tasks.count %>
       <td> <%= task.desc %> </td>
       <td> <%= task.due_date %></td>
   
-      <%if task.priority_id == 4%>
+      <%if task.priority_id == 1%>
         <td> HIGH </td>
-      <%elsif task.priority_id == 14%>
+      <%elsif task.priority_id == 2%>
         <td> low </td>
-      <%elsif task.priority_id == 24%>
+      <%elsif task.priority_id == 3%>
        <td> Medium</td>
       <% end %>
       
