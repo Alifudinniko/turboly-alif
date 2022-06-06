@@ -30,13 +30,14 @@ class TasksController < ApplicationController
     def handle_search
         if params[:priority].present?
             priority = Priority.find_by(id: params[:priority])
-            if priority
+            if priority?
                 @tasks = @tasks.where(priority_id: priority.id)
             else 
                 flash[:alert] = "Not found! "
             end
         end
         if params[:due_date].present?
+            due_date = Task.find_by()
             @tasks = @tasks.where(due_date: params[:due_date])
         end    
         if params[:desc].present?
