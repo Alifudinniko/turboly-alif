@@ -14,9 +14,10 @@ user = User.create(
     ]) 
 priority = Priority.create(
         [
-            {name: "high"},
-            {name: "low"},
-            {name: "medium"}
+            {id:1,name: "high"},
+            {id:2,name: "low"},
+            {id:3,name: "medium"},
+            {id:4,name: "-"}
         ]
     )
 task = Task.create(

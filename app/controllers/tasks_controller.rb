@@ -29,10 +29,16 @@ class TasksController < ApplicationController
 
     def handle_search
         if params[:priority].present?
-            @tasks = @tasks.where(priority_id:  params[:priority])
+            priorit = @tasks.where(priority_id:  params[:priority])
+
+            if @priorit 
+                @tasks = @tasks.where(priority_id:  params[:priority])
+            else
+                @tasks = @tasks.where(priority_id:  nil)
+            end
         end
         if params[:due_date].present?
-            due_date = Task.find_by()
+           
             @tasks = @tasks.where(due_date: params[:due_date])
         end    
         if params[:desc].present?

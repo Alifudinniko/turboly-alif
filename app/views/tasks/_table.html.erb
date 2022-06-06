@@ -18,13 +18,15 @@
       <td> <%= task.name %> </td>
       <td> <%= task.desc %> </td>
       <td> <%= task.due_date %></td>
-  
+    
       <%if task.priority_id == 1%>
         <td> HIGH </td>
       <%elsif task.priority_id == 2%>
         <td> low </td>
       <%elsif task.priority_id == 3%>
        <td> Medium</td>
+       <%else%>
+       <td> -</td>
       <% end %>
       
       <% if task.is_done %>
