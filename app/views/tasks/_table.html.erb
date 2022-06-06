@@ -1,0 +1,47 @@
+
+<table class="table mt-3">
+  <thead>
+    <tr>
+      <th scope="col">Task</th>
+      <th scope="col">Desc</th>
+      <th scope="col">Due Date</th>
+      <th scope="col">Priority</th>
+      <th scope="col">Status</th>
+      <th scope="col"> </th>
+      <th scope="col"> </th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @tasks.each do |task| %>
+    <tr>
+    
+      <td> <%= task.name %> </td>
+      <td> <%= task.desc %> </td>
+      <td> <%= task.due_date %></td>
+  
+      <%if task.priority_id == 1%>
+        <td> HIGH </td>
+      <%elsif task.priority_id == 2%>
+        <td> low </td>
+      <%elsif task.priority_id == 3%>
+       <td> Medium</td>
+      <% end %>
+      
+      <% if task.is_done %>
+        <td> <%= link_to "  finish   " , toggle_task_path(task.id), method: 'patch',class: "btn btn-outline-primary" %></td>
+      <% else %>
+       <td> <%= link_to "Unfinished" , toggle_task_path(task.id), method: 'patch',class: "btn btn-outline-info" %></td>
+      <% end%>
+      
+      <td> <%= link_to "Edit", edit_task_path(task.id), class: "btn btn-secondary" %></td>
+      <td> 
+         <%= link_to 'Remove', task_path(task.id), method: 'delete', data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      
+      </td>
+
+
+    </tr>
+  <% end %>
+  
+  </tbody>
+</table>
